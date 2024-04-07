@@ -47,15 +47,16 @@ Init script is configured to run at boot.
 /opt/splunk/bin/splunk start
 ```
 
-7b alternative way to start Splunk
+7b. alternative way to start Splunk
 ```bash
 systemctl start Splunkd
 ```
 
-
-
-10. start splunk, accept EULA, create a usernam (e.g. admin) and password
+8. check the splunkd.log
 ```bash
-/opt/splunk/bin/splunk start
+less /opt/splunk/var/log/splunk/splunkd.log
 ```
+
+9. Log in to the web console:
+https://<IP_ADDRESS:8000>
 
