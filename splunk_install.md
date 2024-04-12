@@ -58,14 +58,24 @@ https://<IP_ADDRESS:8000>
 
 10. web.conf file is read-only, copy it, change persion of it and edit it.
 ```bash
-$ cp /opt/splunk/etc/system/local/web.conf /opt/splunk/etc/system/local/web.conf
+$ cp /opt/splunk/etc/system/default/web.conf /opt/splunk/etc/system/local/web.conf
 
 change the persmission
 $ chmod 600 /opt/splunk/etc/system/local/web.conf
 
 Change the httpport and enableSplunkWebSSL values to:
+$ vim /opt/splunk/etc/system/local/web.conf
+
 httpport = 443
 enableSplunkWebSSL =  false 
 
 vim /opt/splunk/etc/system/local/web.conf
 ```
+
+11. restart splunk
+```bash
+/opt/splunk/bin/splunk restart
+```
+
+12. login again to the web console:
+https://<IP_ADDRESS:443>
