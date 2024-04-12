@@ -29,15 +29,16 @@ Description: Splunk The platform for machine data.
 
 5. Create a user-seed file with credentials
 ```bash
-$vim /opt/splunk/etc/system/local/user-seed.conf
+$ vim /opt/splunk/etc/system/local/user-seed.conf
 
 [user_info]
 USERNAME = admin
 PASSWORD = $uperSplunk77
 ```
+
 6. Enable auto-boot of Splunk and accept the license
 ```bash
-$/opt/splunk/bin/splunk enable boot-start --accept-license
+$ /opt/splunk/bin/splunk enable boot-start --accept-license
 Init script installed at /etc/init.d/splunk.
 Init script is configured to run at boot.
 ```
@@ -57,6 +58,14 @@ https://<IP_ADDRESS:8000>
 
 10. web.conf file is read-only, copy it, change persion of it and edit it.
 ```bash
-cp /opt/splunk/etc/system/local/web.conf .
+$ cp /opt/splunk/etc/system/local/web.conf /opt/splunk/etc/system/local/web.conf
+
+change the persmission
+$ chmod 600 /opt/splunk/etc/system/local/web.conf
+
+Change the httpport and enableSplunkWebSSL values to:
+httpport = 443
+enableSplunkWebSSL =  false 
+
 vim /opt/splunk/etc/system/local/web.conf
 ```
