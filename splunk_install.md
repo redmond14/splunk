@@ -47,11 +47,6 @@ Init script is configured to run at boot.
 /opt/splunk/bin/splunk start
 ```
 
-7b. alternative way to start Splunk
-```bash
-systemctl start Splunkd
-```
-
 8. check the splunkd.log
 ```bash
 less /opt/splunk/var/log/splunk/splunkd.log
@@ -60,3 +55,8 @@ less /opt/splunk/var/log/splunk/splunkd.log
 9. Log in to the web console:
 https://<IP_ADDRESS:8000>
 
+10. web.conf file is read-only, copy it, change persion of it and edit it.
+```bash
+cp /opt/splunk/etc/system/local/web.conf .
+vim /opt/splunk/etc/system/local/web.conf
+```
