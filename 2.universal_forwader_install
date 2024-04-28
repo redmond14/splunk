@@ -1,6 +1,8 @@
 1. Download universal forwader
+
 ```bash
 wget -O splunkforwarder-9.2.1-78803f08aabb-x64-release.msi "https://download.splunk.com/products/universalforwarder/releases/9.2.1/windows/splunkforwarder-9.2.1-78803f08aabb-x64-release.msi"
 ```
+
 2. Install it
 
