@@ -1,0 +1,39 @@
+note: Optional steps:
+
+1. Create a private key root CA. The output will be a file named: "myCertAuthPrivateKey.key"
+```bash
+/opt/splunk/bin/splunk cmd openssl genrsa -aes256 -out myCertAuthPrivateKey.key 2048
+```
+2. Use the private key "myCertAuthPrivateKey.key" to generate CSR for your certificate. Your can use wildcards for Common Name, e.g. *.mycompany.com.
+```bash
+/opt/splunk/bin/splunk cmd openssl req -new -key myCertAuthPrivateKey.key -out myCertAuthCertificate.csr
+```
+
+3. Use the CSR file you created and sign it with the private key you created in step 1, to create the root certificate authrority certificate. OpenSSL will ask for password, enter the pass you have added at stem 1.
+```bash
+/opt/splunk/bin/splunk cmd openssl x509 -req -in myCertAuthCertificate.csr -sha512 -signkey myCertAuthPrivateKey.key -CAcreateserial -out myCertAuthCertificate.pem -days 1095
+```
+
+4. Generate a private key for a server (will be used for a webserver) certificate:
+```bash
+/opt/splunk/bin/splunk cmd openssl genrsa -aes256 -out myServerPrivateKey.key 2048
+```
+
+5. Use the private key " myServerPrivateKey.key" to generate CSR for your certificate.
+note: The information you provide for the Common Name field is what Splunk plaatfrom uses for TLS certificate host name validation.
+
+```bash
+/opt/splunk/bin/splunk cmd openssl req -new -key myServerPrivateKey.key -out myServerCertificate.csr
+```
+
+6. Sign the CSR file you created with the root CA certificate.
+```bash
+/opt/splunk/bin/splunk cmd openssl x509 -req -in myServerCertificate.csr -SHA256 -CA myCertAuthCertificate.pem -CAkey myCertAuthPrivateKey.key -CAcreateserial -out myServerCertificate.pem -days 1095
+```
+
+7. Create a single combined certificate file
+```bash
+cat myServerCertificate.pem myServerPrivateKey.key myCertAuthCertificate.pem  > ALL_CERTS.pem
+```
+
+![](attachments/
