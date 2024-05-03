@@ -1,4 +1,4 @@
-note: Optional steps:
+### note: Optional steps:
 
 1. Create a private key root CA. The output will be a file named: "myCertAuthPrivateKey.key"
 ```bash
