@@ -2,7 +2,7 @@
 
 1. Create a private key root CA. The output will be a file named: "myCertAuthPrivateKey.key"
 
-```bash
+```
 /opt/splunk/bin/splunk cmd openssl genrsa -aes256 -out myCertAuthPrivateKey.key 2048
 ```
 2. Use the private key "myCertAuthPrivateKey.key" to generate CSR for your certificate. Your can use wildcards for Common Name, e.g. *.mycompany.com.
