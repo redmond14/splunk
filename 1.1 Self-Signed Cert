@@ -36,5 +36,3 @@ note: The information you provide for the Common Name field is what Splunk plaat
 ```bash
 cat myServerCertificate.pem myServerPrivateKey.key myCertAuthCertificate.pem  > ALL_CERTS.pem
 ```
-
-![](attachments/cert1.png)
