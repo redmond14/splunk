@@ -1,0 +1,36 @@
+1. Lets search some data and visualise it. Go to Settings --> Data --> Data Inputs. There is a Local input and Forwarded inputs, which is adata from other sources. Click on "Files & Directories"
+![](attachments/datainput_files_and_directories.png)
+
+2. These are Splunk logs. Let's get the /var/log/auth. Click on "New Local Files & Directories" at the right upper corner.
+![](attachments/new_local_files.png)
+
+3. Click "New Local Files & directory" and browse /var/log/auth file. Click next.
+![](attachments/varlogauth.png)
+
+4. Change Source type: linux_secure and hit next.
+![](attachments/linux_secure)
+
+5. Create a new index and name it, e.g. linux_secure_index
+![](attachments/create_new_index.png)
+
+6. Simply name the index (or you can leave it on the default as well. Go through the settings and options.
+![](attachments/linux_secure_index)
+
+7. Hit the Review button and Submit it. Input is file, the source is /var/log/auth.log, host is our host (server) and the index is the one You specified in the previous step.
+![](attachments/review.png)
+
+8. You just create your first index. Well done! :) Lets search for some data.
+![](attachments/file_input_created.png)
+
+9. Go back to "Settings --> Data --> Data inputs --> Files and directories", you should see at the bottom the newly created monitored file.
+
+10. Go to Apps --> Search & Reporting. Type in the search filed "index="linux_secure_index" (or the name of the index you specified at step 5). The default time window is 24h. Go through the result, expand the fields.
+![](attachments/search01.png)
+
+11. In the Settings --> User and authentication --> Users --> edit Admin and set the "Time Zone" to GMT +1
+![](attachments/admin_timezone.png)
+
+12. Generate some authentication failure log messages connectiong to Splunk server via SSH and misstype the password.
+![](attachments/failed_ssh.png)
+
+13. Search for index="linux_secure_index" , change the time windows to 30min
