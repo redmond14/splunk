@@ -1,0 +1,1 @@
+alert tcp any any -> any any (msg:"Detected Hello World! string"; content:"Hello World!"; sid:1000004;)
